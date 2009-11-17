@@ -37,7 +37,7 @@
 				<?php echo JHTML::_( 'form.token' ); ?>
 				<?php JHTML::_('behavior.calendar'); ?>
 			</form>
-			<?
+			<?php
 		}
 
 		function showRecord($rows, $page, $list = array())
@@ -94,7 +94,7 @@
 				<input type="hidden" name="boxchecked" value="0" />
 				<?php echo JHTML::_( 'form.token' ); ?>
 				</form>
-			<?
+			<?php
 		}
 
 	}
