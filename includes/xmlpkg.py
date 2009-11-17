@@ -4,7 +4,8 @@ import os.path
 
 from includes.action import SameAction
 from time import strftime, gmtime
-import os, shutil
+import os, shutil, zipfile
+
 class Xmlpkg(SameAction):
 
     def __init__(self, tables, config):
@@ -59,9 +60,26 @@ class Xmlpkg(SameAction):
         result = {'folder':folder, 'file':file}
         return result
 
+    def zipfolder(self, path, relname, archive):
+        paths = os.listdir(path)
+        for p in paths:
+            p1 = os.path.join(path, p)
+            p2 = os.path.join(relname, p)
+            archive.write(p1, p2)
+            if os.path.isdir(p1):
+                self.zipfolder(p1, p2, archive)
+
     def createPakage(self, package, path):
         #if os.path.isdir(path):
         #    path = os.path.dirname(path)
+        """
         cmd = "cd %s && zip -r %s ./" % (path, package)
         os.system(cmd)
         print "Package: %s/%s.zip" % (path, package)
+        """
+        
+        compressedFile = zipfile.ZipFile("%s.zip"%(os.path.join(path,package)),"w", zipfile.ZIP_STORED)
+        self.zipfolder(os.path.join(path), "/", compressedFile)
+        if os.path.isfile("%s.zip"%(os.path.join(path,package))):
+            print "The component was successfuly compressed in %s.zip" % (os.path.join(path,package))
+            
