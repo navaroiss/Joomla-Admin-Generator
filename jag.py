@@ -22,16 +22,16 @@ def showAbout():
     """ Print somethings out """
     print
     print "=============================="
-    print "| Joomla Admin Generator            |"
-    print "| Le Dinh Thuong                          |"
-    print "| Version 1.0                                 |"
+    print "| Joomla Admin Generator      |"
+    print "| Le Dinh Thuong              |"
+    print "| Version 1.0                 |"
     print "=============================="
     print
 
 def removeOldZip(file_path):
     """ Remove the zip file if it's living """
     if os.path.isfile(file_path) is True:
-        os.system("rm %s" % file_path)
+        os.remove(file_path)
 
 def buildPackage(tables, table_fields):
     """ This is main script, this does anything we want """
