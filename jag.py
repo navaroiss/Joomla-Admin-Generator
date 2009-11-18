@@ -22,9 +22,9 @@ def showAbout():
     """ Print somethings out """
     print
     print "=============================="
-    print "| Joomla Admin Generator      |"
-    print "| Le Dinh Thuong              |"
-    print "| Version 1.0                 |"
+    print "| Joomla Admin Generator     |"
+    print "| Le Dinh Thuong             |"
+    print "| Version 1.0                |"
     print "=============================="
     print
 

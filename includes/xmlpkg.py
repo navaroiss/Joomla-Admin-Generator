@@ -60,14 +60,27 @@ class Xmlpkg(SameAction):
         result = {'folder':folder, 'file':file}
         return result
 
-    def zipfolder(self, path, relname, archive):
+    def zipfolder(self, path, relname, archive, basefolder = ''):
         paths = os.listdir(path)
-        for p in paths:
-            p1 = os.path.join(path, p)
-            p2 = os.path.join(relname, p)
-            archive.write(p1, p2)
-            if os.path.isdir(p1):
-                self.zipfolder(p1, p2, archive)
+        if len(paths)>=1:
+            for p in paths:
+                p1 = os.path.join(path, p)
+                p2 = os.path.join(relname, p)
+                print "Added: %s" % (p1)
+                if os.path.isdir(p1):
+                    self.zipfolder(p1, p2, archive)
+                else:
+                    try:
+                        fext = p1.split('.')[-1]
+                        if fext != 'zip':
+                            archive.write(p1, p2)
+                        else:
+                            pass
+                    except ValueError:
+                        pass
+        else:
+            print "Added: %s" % (path)
+            archive.write(path)
 
     def createPakage(self, package, path):
         #if os.path.isdir(path):
@@ -77,9 +90,8 @@ class Xmlpkg(SameAction):
         os.system(cmd)
         print "Package: %s/%s.zip" % (path, package)
         """
-        
         compressedFile = zipfile.ZipFile("%s.zip"%(os.path.join(path,package)),"w", zipfile.ZIP_STORED)
-        self.zipfolder(os.path.join(path), "/", compressedFile)
+        self.zipfolder(os.path.join(path), "/", compressedFile, os.path.join(path))
         if os.path.isfile("%s.zip"%(os.path.join(path,package))):
             print "The component was successfuly compressed in %s.zip" % (os.path.join(path,package))
             

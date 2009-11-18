@@ -35,6 +35,8 @@
      $id = $field['id'];
      $name = $field['name'];
      $field_parent = $field['parent'];
+     $t = '';
+
      while ($acat = mysql_fetch_array($sql)) 
      { 
           if ($acat[$field_parent] == $root) 

@@ -125,11 +125,13 @@
 			JToolBarHelper::addNewX();
 			JToolBarHelper::deleteList( "Are you sure? " , 'remove');
 
+
+                        $option         = JRequest::getCmd( 'option' );
 			$limit		= $mainframe->getUserStateFromRequest( 'global.list.limit', 'limit', $mainframe->getCfg('list_limit'), 'int' );
 			$limitstart	= $mainframe->getUserStateFromRequest( $option.'.limitstart', 'limitstart', 0, 'int' );
 			$join_query	= array();
 			$condition 	= array();
-			$keywords = $_POST['keywords'];
+			$keywords = JRequest::getVar( 'keywords' );
 			$find_keyword = '';
 			
 			{CONDITION}			
