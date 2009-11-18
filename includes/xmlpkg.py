@@ -12,7 +12,10 @@ class Xmlpkg(SameAction):
         folder = file = ""
         listfiles = self.listDir( config['result_path'], {'folder':[], 'file':[]} )
         for fi in listfiles['file']:
-            name = fi.replace(config['result_path']+self.slash, '')
+            fi = fi.replace("\\", "/")
+            be_removed = config['result_path']+self.slash
+            be_removed = be_removed.replace("\\", "/")
+            name = fi.replace(be_removed, '')
             file += "<filename>"+name+"</filename>\n"
         self.replate_data['FOLDER'] = folder
         self.replate_data['FILE'] = file
@@ -60,7 +63,7 @@ class Xmlpkg(SameAction):
         result = {'folder':folder, 'file':file}
         return result
 
-    def zipfolder(self, path, relname, archive, basefolder = ''):
+    def zipfolder(self, path, relname, archive, compress):
         paths = os.listdir(path)
         if len(paths)>=1:
             for p in paths:
@@ -68,19 +71,19 @@ class Xmlpkg(SameAction):
                 p2 = os.path.join(relname, p)
                 print "Added: %s" % (p1)
                 if os.path.isdir(p1):
-                    self.zipfolder(p1, p2, archive)
+                    self.zipfolder(p1, p2, archive, compress)
                 else:
                     try:
                         fext = p1.split('.')[-1]
                         if fext != 'zip':
-                            archive.write(p1, p2)
+                            archive.write(p1, p2, compress)
                         else:
                             pass
                     except ValueError:
                         pass
         else:
             print "Added: %s" % (path)
-            archive.write(path)
+            archive.write(path, compression=compress)
 
     def createPakage(self, package, path):
         #if os.path.isdir(path):
@@ -90,8 +93,9 @@ class Xmlpkg(SameAction):
         os.system(cmd)
         print "Package: %s/%s.zip" % (path, package)
         """
-        compressedFile = zipfile.ZipFile("%s.zip"%(os.path.join(path,package)),"w", zipfile.ZIP_STORED)
-        self.zipfolder(os.path.join(path), "/", compressedFile, os.path.join(path))
+        compression = zipfile.ZIP_STORED
+        compressedFile = zipfile.ZipFile("%s.zip"%(os.path.join(path,package)),"w", compression)
+        self.zipfolder(os.path.join(path), "/", compressedFile, compression)
         if os.path.isfile("%s.zip"%(os.path.join(path,package))):
             print "The component was successfuly compressed in %s.zip" % (os.path.join(path,package))
             
