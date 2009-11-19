@@ -15,9 +15,9 @@ I have one anwser
 How to run?
 -----------
 linux/unix:
-	`python jag.py -c config.xml`
+	python jag.py -c config.xml
 windows:
-	`c:\\python26\python.exe jag.py -c config.xml`
+	c:\\python26\python.exe jag.py -c config.xml
 
 An example:
 -----------
