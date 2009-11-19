@@ -45,7 +45,10 @@ The content in config.xml
 
 Video
 ------
-Download video: http://github.com/navaroiss/Joomla-Admin-Generator/downloads
+Download:
+
+- [link 1](http://github.com/navaroiss/Joomla-Admin-Generator/downloads)
+- [link 2 - best quality](http://joomla-admin-generator.googlecode.com/files/how-it-work.ogv)
 
 The field type to be supported
 -------------------------------
