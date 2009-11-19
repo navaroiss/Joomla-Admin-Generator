@@ -14,6 +14,9 @@
 	$task =& JRequest::getCmd('task','show');
 	$action =& JRequest::getCmd('action','');        
 
+        if($c=='')
+            $c = '{VAR}';
+
 	include_once( JPATH_COMPONENT_ADMINISTRATOR.DS.'controllers'.DS."$c.php" );
 	include_once( JPATH_COMPONENT_ADMINISTRATOR.DS.'models'.DS."models.php" );
 	include_once(JPATH_COMPONENT_ADMINISTRATOR.DS."models".DS."helper.php");

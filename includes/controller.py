@@ -124,7 +124,7 @@ class ActionController(SameAction):
             self.writeToFile(interface_text, interface_file)
 
     def run(self, fields, controller_name):
-        """ Call the method to write php code """
+        """ Call the methods to write php code """
         self.filterQuery(fields)   
         self.fileAllow(fields)
 
@@ -148,6 +148,8 @@ class ActionController(SameAction):
         """ """
         if self.isFile(result_controller_path+com_name+self.ext) is not True:
             root_content = self.readTemplate(self.template_controller + self.slash + "root_controller"+self.ext)
+            self.replate_data['FILE_NAME'] = com_name+self.ext
+            root_content = self.pasrseTemplate(root_content)
             self.writeToFile(root_content, self.result_path+self.slash+com_name+self.ext)
 
         text = self.pasrseTemplate(text)

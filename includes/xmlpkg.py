@@ -43,7 +43,6 @@ class Xmlpkg(SameAction):
 
         xml = self.pasrseTemplate(xml)
         if os.path.isdir(config['result_path']):
-            #xml_file_path = os.path.dirname(config['result_path']) + self.slash + name + '.xml'
             xml_file_path = config['result_path'] + self.slash + name + '.xml'
         self.writeToFile(xml, xml_file_path)
 

@@ -91,7 +91,7 @@ if hasattr(options, 'config') and options.config != None:
                 type = []
                 
                 if field.getAttribute('type') == 'int':
-                    """ Interger """
+                    """ Integer """
                     s = "%s(%s)" % ( field.getAttribute('type'), field.getAttribute('length') )
                     type.append( s )
                     if field.getAttribute('auto_increment').lower() == "true":
@@ -136,7 +136,11 @@ if hasattr(options, 'config') and options.config != None:
                 elif field.getAttribute('type') == 'listfile':
                     """ Listfile """
                     type.append( field.getAttribute('type') )
-                    type.append( field.getAttribute('folder') )
+                    type.append( field.getAttribute('folder'))
+                    
+                elif field.getAttribute('type') == 'boolean':
+                    """ Boolean """
+                    type.append( field.getAttribute('type') )
                 
                 """ Add the field to dict """
                 data.append( {field.childNodes[0].data:type} )

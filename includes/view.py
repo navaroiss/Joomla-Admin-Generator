@@ -82,7 +82,7 @@ class ActionView(SameAction):
                 self.replate_data['GET_EDITOR'] = '$editor =& JFactory::getEditor();';
                 form_html += self.td_row_editor % (field_name, field_name.capitalize(),self.var,  field_name, field_name,field_name)
             elif field_type == "boolean":
-                form_html += self.autoBooleanField(field_type, field_type)
+                form_html += self.autoBooleanField(field_name, field_type)
             elif field_type == "date":
                 form_html += self.autoDateField(field_name, field_type)
             elif field_type == "listfile":
@@ -145,7 +145,7 @@ class ActionView(SameAction):
     
     def autoTreeField(self, field, field_name):
         form_html = '<?php $field["field_name"]="%s[%s]"; $field["id"]="%s"; $field["name"]="%s"; $field["parent"]="%s"?>\n' % (self.var, field_name,  field[field_name][3], field[field_name][2], field[field_name][4])
-        form_html += '<tr>\n<td class="key">\n<label for="%s">\n<?php echo JText::_("%s");?>:</label>\n</td>\n<td ><?php echo listCategories((isset($row->%s)?$row->%s:""), %s, "%s");?>\n</td>\n</tr>\n' % (field_name.capitalize(), field_name,field_name, field_name, '$field', field[field_name][1])
+        form_html += '<tr>\n<td class="key">\n<label for="%s">\n<?php echo JText::_("%s");?>:</label>\n</td>\n<td ><?php echo listCategories((isset($row->%s)?$row->%s:""), %s, "%s");?>\n</td>\n</tr>\n' % (field_name, field_name.capitalize(),field_name, field_name, '$field', field[field_name][1])
         return form_html
 
     def autoFileField(self, field, type):
@@ -167,6 +167,6 @@ class ActionView(SameAction):
         return form_html
 
     def autoBooleanField(self, field, type):
-        select_option = "<select name='%s[%s]' id='%s'><option <?php if(isset($row->%s)){ echo ($row->%s==1)?'selected=\"selected\"':'';}?> value='1'>Yes</option><option <?php if(isset($row->%s)){ echo ($row->%s==0)?'selected=\"selected\"':'';}?> value='0'>No</option></select>" % (self.var, field, field, field, field, field)
+        select_option = "<select name='%s[%s]' id='%s'><option <?php if(isset($row->%s)){ echo ($row->%s==1)?'selected=\"selected\"':'';}?> value='1'>Yes</option><option <?php if(isset($row->%s)){ echo ($row->%s==0)?'selected=\"selected\"':'';}?> value='0'>No</option></select>" % (self.var, field, field, field, field, field, field)
         form_html = '<tr>\n<td class="key">\n<label for="%s">\n<?php echo JText::_("%s");?>:</label>\n</td>\n<td >%s\n</td>\n</tr>\n' % (field, field.capitalize(), select_option)
         return form_html

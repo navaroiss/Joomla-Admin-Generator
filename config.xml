@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component name="com_agenda" author="Le Dinh Thuong" email="navaroiss@gmail.com">
+<component name="com_blog" author="Le Dinh Thuong" email="navaroiss@gmail.com">
 	<table name="agenda_category" sort_name="category">
 		<field type="int" length="11" auto_increment="true" primary_key="true">id</field>
 		<field type="varchar" length="255">name</field>
@@ -15,5 +15,6 @@
 		<field type="file" file_type="document, compress">document</field>
                 <field type="listfile" folder="smilies">icon</field>
 		<field type="tree" table_name="agenda_category" table_field_name="name" table_field_primary="id" table_field_parent="parent">catid</field>
+                <field type="boolean">published</field>
 	</table>
 </component>

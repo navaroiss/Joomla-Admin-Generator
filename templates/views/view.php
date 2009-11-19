@@ -10,9 +10,17 @@
 	** File: {FILE_NAME}
 	** Time: {TIME}
 	*/
-
+	
+	
 	class Render_HTML
 	{
+		/**
+		 * Show a form to add/edit a record
+		 *
+		 * @param boolean edit
+		 * @param object row
+		 * @param string image_path_form_select
+		 */
 		function editRecord($edit, $row, $image_path_from_select = '/images/')
 		{
 			{GET_EDITOR}
@@ -40,6 +48,13 @@
 			<?php
 		}
 
+		/**
+		 * A table show all records
+		 *
+		 * @param array rows
+		 * @param int page
+		 * @param array list
+		 */
 		function showRecord($rows, $page, $list = array())
 		{
 			?>

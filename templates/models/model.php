@@ -35,6 +35,15 @@
 			parent::__construct($options);
 		}
 
+		/**
+		 * Get a record
+		 * 
+		 * @param string table
+		 * @param array record_condition
+		 * @param array fields 
+		 * @param string key
+		 * @return object
+		 */
 		function loadRecord($table, $record_condition = array(),  $fields =array(), $key = 'id')
 		{
 			$where = '';
@@ -66,11 +75,22 @@
 			return $this->loadObject();
 		}
 
-		/*
-		** $query_join['select']
-		** $query_join['table']
-		** $query_join['condition']
-		*/
+		/**
+		 * Get more records
+		 * 
+		 * @param string table
+		 * @param array record_condition
+		 * @param int limitstart
+		 * @param int limit
+		 * @param boolean total
+		 * @param array query_join
+		 * @param string for_or_condition
+		 * @return object
+		 * 
+		 * $query_join['select']
+		 * $query_join['table']
+		 * $query_join['condition']
+		 */
 		function loadRecords($table, $record_condition=array(), $limitstart=0, $limit=1, $total = false, 
 								$query_join=array(), $for_or_condition = '')
 		{
@@ -122,7 +142,15 @@
 			//echo $this->getQuery();
 			return $this->loadObjectList();
 		}
-
+		
+		/**
+		 * Remove the records
+		 * 
+		 * @param string table
+		 * @param array record_condition
+		 * @param string key
+		 * 
+		 */
 		function removeRecords($table, $record_condition = array(), $key = 'id')
 		{
 			$where = '';
@@ -140,11 +168,26 @@
 			$this->setQuery($sql); $this->query();
 		}
 
+		/**
+		 * Update the record
+		 * 
+		 * @param string table
+		 * @param array/object data
+		 * @param int k 
+		 * @return boolean
+		 */
 		function updateRecord($table, $data, $k)
 		{
 			return $this->updateObject($this->getPrefix().$table, $data, $k);
 		}
 
+		/**
+		 * Insert a record
+		 * 
+		 * @param string table
+		 * @param array data
+		 * return boolean
+		 */
 		function insertRecord($table, $data)
 		{
 			return $this->insertObject($this->getPrefix().$table, $data);

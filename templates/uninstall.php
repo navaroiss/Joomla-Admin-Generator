@@ -5,13 +5,16 @@
 	** Email: {AUTHOR_EMAIL}
 	** 
 	** Component:  {COMPONENT_PATH}
-	** Controller: {CONTROLLER_NAME}Controller
 	** File: {FILE_NAME}
 	** Time: {TIME}
 	*/
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
+/**
+ * Uninstall
+ * @return unknown_type
+ */
 function com_uninstall()
 {
 	global $mainframe;
@@ -29,6 +32,12 @@ function com_uninstall()
 	}
 }
 
+/**
+ * Run sql queries
+ * 
+ * @param object $db
+ * @return string msg
+ */
 function _runQueries($db)
 {
 	{DROPQUERIES}

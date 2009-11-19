@@ -5,44 +5,54 @@
 	** Email: {AUTHOR_EMAIL}
 	** 
 	** Component:  {COMPONENT_PATH}
-	** Controller: {CONTROLLER_NAME}Controller
 	** File: {FILE_NAME}
 	** Time: {TIME}
 	*/
-// no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
 
-function com_install()
-{
-	global $mainframe;
-	$db =& JFactory::getDBO();
-	$db_prefix = $mainframe->getCfg('dbprefix');
-	$result = _runQueries($db);
-	if(count($result)>=1)
+	// no direct access
+	defined( '_JEXEC' ) or die( 'Restricted access' );
+
+	/**
+	 * Install
+	 * @return unknown_type
+	 */
+	function com_install()
 	{
-		foreach($result as $msg)
+		global $mainframe;
+		$db =& JFactory::getDBO();
+		$db_prefix = $mainframe->getCfg('dbprefix');
+		$result = _runQueries($db);
+		if(count($result)>=1)
 		{
-			echo $msg."<br/>\n";
+			foreach($result as $msg)
+			{
+				echo $msg."<br/>\n";
+			}
+		}else{
+			echo "Install Component Success";
 		}
-	}else{
-		echo "Install Component Success";
 	}
-}
-
-function _runQueries($db)
-{
-	{CREATEQUERIES}
-	$msg = array();
-	if( count($installQueries) >=1 )
+	
+	/**
+	 * Run SQL Query
+	 * 
+	 * @param object $db
+	 * @return string
+	 */
+	function _runQueries($db)
 	{
-		foreach ( $installQueries as $query ) {
-			$db->setQuery( $query );
-			$db->query();
-			if ( $db->getErrorNum() ) {
-				$msg[] = '<br/>' . $db->stderr();
+		{CREATEQUERIES}
+		$msg = array();
+		if( count($installQueries) >=1 )
+		{
+			foreach ( $installQueries as $query ) {
+				$db->setQuery( $query );
+				$db->query();
+				if ( $db->getErrorNum() ) {
+					$msg[] = '<br/>' . $db->stderr();
+				}
 			}
 		}
+		return $msg;
 	}
-	return $msg;
-}
 

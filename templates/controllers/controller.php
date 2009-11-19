@@ -41,7 +41,11 @@
                         $this->option = $_REQUEST['option'];
                         $this->c = $_REQUEST['c'];
 		}
-
+		
+		/**
+		 * Show a form to add new record or edit a record
+		 * 
+		 */
 		function editRecord($edit)
 		{
 			global $db;
@@ -57,6 +61,13 @@
 			return Render_HTML::editRecord($edit, $data);
 		}
 
+		/**
+		 * Save/Update a record
+		 * 
+		 * @param array _POST
+		 * @param string action
+		 * @param string task
+		 */
 		function saveRecord($_POST, $action = '', $task='')
 		{
 			global $db, $mainframe;
@@ -116,6 +127,10 @@
 				$this->refresh();;
 		}
 
+		/**
+		 * Show a record
+		 * 
+		 */
 		function showRecord()
 		{
 			global $db, $mainframe;
@@ -144,6 +159,10 @@
 			return Render_HTML::showRecord($data, $paging);
 		}
 
+		/**
+		 * Remove the records
+		 * 
+		 */
 		function removeRecord()
 		{
 			global $db;
@@ -151,6 +170,11 @@
 			$this->refresh();
 		}
 
+		/**
+		 * Redirect to another page
+		 * 
+		 * @param array params
+		 */
 		function refresh($params = array())
 		{
 			global $mainframe;
@@ -164,6 +188,11 @@
 			$mainframe->redirect($url);
 		}
 
+		/**
+		 * Get table name
+		 * 
+		 * @return string
+		 */
 		function getDataTbl()
 		{
 			return $this->tbl;
