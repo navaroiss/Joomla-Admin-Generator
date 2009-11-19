@@ -38,8 +38,11 @@
 		function {CONTROLLER_NAME}Controller()
 		{
 			$GLOBALS['db'] = new {COMPONENT_NAME}Models();
-                        $this->option = $_REQUEST['option'];
-                        $this->c = $_REQUEST['c'];
+            if(isset($_REQUEST['option'])) $this->option = $_REQUEST['option'];
+            if(isset($_REQUEST['c'])) 
+            	$this->c = $_REQUEST['c'];
+            else
+            	$this->c = $this->var;
 		}
 		
 		/**

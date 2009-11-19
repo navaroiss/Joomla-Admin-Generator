@@ -89,7 +89,7 @@
 							$i=0; 
 						if(count($rows)>=1){
 							foreach($rows as $k=>$v){
-								$checked 	= JHTML::_('grid.checkedout',   $v, $i );
+								$checked 	= @JHTML::_('grid.checkedout',   $v, $i );
 								?>
 								<tr>
 									<td><?php echo $page->getRowOffset( $i ); ?></td>

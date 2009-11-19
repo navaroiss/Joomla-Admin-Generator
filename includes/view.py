@@ -152,7 +152,7 @@ class ActionView(SameAction):
         select_image = "<input type='file' name='%s[%s]' />" % (self.var, field)
         form_html = '<tr>\n<td class="key">\n<label for="%s">\n<?php echo JText::_("%s");?>:</label>\n</td>\n<td >%s\n</td>\n</tr>\n' % (field, field.capitalize(),select_image)
         delete_file = '<input type="checkbox" name="%s[delete_files][%s]"/> <a href="<?=JURI::root().\'administrator/components/%s/assets/upload/\'.$row->%s?>">Download</a>' % (self.var, field, self.component_name, field)
-        form_html += '<?php if($row->%s!=\'\'){?><tr>\n<td class="key">\n<label for="%s">\n<?php echo JText::_("%s");?>:</label>\n</td>\n<td >%s\n</td>\n</tr>\n<?php } ?>' % (field, "delete_"+field, "Delete "+field.capitalize(), delete_file)
+        form_html += '<?php if(isset($row->%s)){if($row->%s!=\'\'){?><tr>\n<td class="key">\n<label for="%s">\n<?php echo JText::_("%s");?>:</label>\n</td>\n<td >%s\n</td>\n</tr>\n<?php }} ?>' % (field, field, "delete_"+field, "Delete "+field.capitalize(), delete_file)
         return form_html
 
     def autoListField(self, field, type):
