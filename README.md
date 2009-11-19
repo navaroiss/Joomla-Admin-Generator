@@ -14,15 +14,13 @@ I have one anwser
 
 How to run?
 -----------
-
-	linux/unix:
-		`python jag.py -c config.xml`
-	windows:
-		`c:\\python26\python.exe jag.py -c config.xml`
+linux/unix:
+	`python jag.py -c config.xml`
+windows:
+	`c:\\python26\python.exe jag.py -c config.xml`
 
 An example:
 -----------
-<?xml version="1.0" encoding="utf-8"?>
 <component name="com_test" author="Your name" email="your.email@gmail.com">
 	<table name="test_category" sort_name="category">
 		<field type="int" length="11" auto_increment="true" primary_key="true">id</field>
