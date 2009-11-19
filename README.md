@@ -10,3 +10,50 @@ There are three questions, if you are a joomla developer
 I have one anwser
 -----------------
 - Jag can do that. Let belive me and run it right now :-) 
+
+How to run?
+-----------
+
+	linux/unix) `python jag.py -c config.xml`
+	windows) `c:\\python26\python.exe jag.py -c config.xml`
+
+An example:
+-----------
+<?xml version="1.0" encoding="utf-8"?>
+<component name="com_test" author="Your name" email="your.email@gmail.com">
+	<table name="test_category" sort_name="category">
+		<field type="int" length="11" auto_increment="true" primary_key="true">id</field>
+		<field type="varchar" length="255">name</field>
+		<field type="text">value</field>
+		<field type="int" length="10" belong="id">parent</field>
+	</table>
+	<table name="test_entry" sort_name="entry">
+		<field type="int" length="11" auto_increment="true" primary_key="true">id</field>
+		<field type="varchar" length="250">title</field>
+		<field type="date" design="%Y-%m-%d">date</field>
+		<field type="text">content</field>
+                <field type="listfile" folder="smilies">icon</field>
+		<field type="file" file_type="image">image</field>
+		<field type="file" file_type="document, compress">document</field>
+		<field type="tree" table_name="test_category" table_field_name="name" table_field_primary="id" table_field_parent="parent">catid</field>
+                <field type="boolean">published</field>
+	</table>
+</component>
+
+The field type to be supported:
+-------------------------------
+
+Normal:
+
+- int
+- varchar
+- text
+- date
+- boolean
+
+
+Special:
+
+- file
+- listfile
+- tree
