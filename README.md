@@ -10,13 +10,15 @@ There are three questions, if you are a joomla developer
 I have one anwser
 -----------------
 - Jag can do that. Let belive me and run it right now :-) 
-- Get one: http://github.com/navaroiss/Joomla-Admin-Generator/archives/master
+- [Get one jag](http://github.com/navaroiss/Joomla-Admin-Generator/archives/master)
 
 How to run?
 -----------
 
-	linux/unix) `python jag.py -c config.xml`
-	windows) `c:\\python26\python.exe jag.py -c config.xml`
+	linux/unix:
+		`python jag.py -c config.xml`
+	windows:
+		`c:\\python26\python.exe jag.py -c config.xml`
 
 An example:
 -----------
