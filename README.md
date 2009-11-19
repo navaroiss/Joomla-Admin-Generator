@@ -10,6 +10,7 @@ There are three questions, if you are a joomla developer
 I have one anwser
 -----------------
 - Jag can do that. Let belive me and run it right now :-) 
+- Get one: http://github.com/navaroiss/Joomla-Admin-Generator/archives/master
 
 How to run?
 -----------
@@ -39,6 +40,10 @@ An example:
                 <field type="boolean">published</field>
 	</table>
 </component>
+
+Video:
+------
+Download video: http://github.com/navaroiss/Joomla-Admin-Generator/downloads
 
 The field type to be supported:
 -------------------------------
