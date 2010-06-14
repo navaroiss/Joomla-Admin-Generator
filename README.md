@@ -64,6 +64,6 @@ Normal:
 
 Special:
 
-- file *to upload images, document...*
-- listfile *to list all file in a directory*
+- file *to upload images, documents...*
+- listfile *to list all files in a directory*
 - tree *to show a multi-level category*
