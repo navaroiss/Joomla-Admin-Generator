@@ -10,7 +10,7 @@ There are three questions, if you are a joomla developer
 I have one anwser
 -----------------
 - Jag can do that. Let belive me and run it right now :-) 
-- [Get one jag](http://github.com/navaroiss/Joomla-Admin-Generator/archives/master)
+- [Download](http://github.com/navaroiss/Joomla-Admin-Generator/archives/master)
 
 How to run?
 -----------
@@ -66,4 +66,4 @@ Special:
 
 - file *to upload images, documents...*
 - listfile *to list all files in a directory*
-- tree *to show a multi-level category*
+- tree *to show a multi-level categorys*
